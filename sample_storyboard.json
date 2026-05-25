@@ -1,0 +1,100 @@
+{
+  "project": {
+    "source_pdf": "inputs/SNE-UNIT-IV.pdf",
+    "total_scenes": 7,
+    "pipeline_version": "1.0"
+  },
+  "scenes": [
+    {
+      "scene_id": "scene_001",
+      "scene_number": 1,
+      "scene_type": "Intro",
+      "heading": "Intro \u2013 Overview",
+      "narration_text": "The digital age has brought numerous benefits, yet also raises concerns about online privacy and trust. Understanding user behavior is crucial for designing effective systems that cater to individual needs and preferences.",
+      "visual_prompt": "A woman sits in front of a computer screen displaying a software interface with customizable privacy settings, her eyes focused on the screen as she makes adjustments with one relaxed hand., photorealistic, ultra realistic, cinematic lighting, natural colors, detailed textures.",
+      "duration": 14,
+      "image_path": "outputs/scene_1.png",
+      "audio_path": "outputs/audio/audio_01.mp3",
+      "video_path": "outputs/clips/clip_01.mp4",
+      "status": "video_generated"
+    },
+    {
+      "scene_id": "scene_002",
+      "scene_number": 2,
+      "scene_type": "Explanation",
+      "heading": "Explanation \u2013 Overview",
+      "narration_text": "In a ubiquitous computing environment, analyzing vast amounts of data is essential to break down complex interactions into smaller parts and utilize sensing and reasoning capabilities to make informed decisions. This requires adopting a structured approach involving Data Management, New Knowledge Generation, and Service Exposure and Control.",
+      "visual_prompt": "A user sits in front of a computer screen displaying a dashboard with various sections: Data Management, New Knowledge Generation and Service Exposure & Control. The user's face is focused on the screen, hands relaxed on the armrest., photorealistic, ultra realistic, cinematic lighting, natural colors, detailed textures.",
+      "duration": 20,
+      "image_path": "outputs/scene_2.png",
+      "audio_path": "outputs/audio/audio_02.mp3",
+      "video_path": "outputs/clips/clip_02.mp4",
+      "status": "video_generated"
+    },
+    {
+      "scene_id": "scene_003",
+      "scene_number": 3,
+      "scene_type": "Example",
+      "heading": "Example \u2013 Overview",
+      "narration_text": "A company uses reality mining to aggregate data from various sources, revealing patterns and insights about specific social contexts. By analyzing this data, they can identify correlations between events and predict future occurrences, enabling them to better understand user behavior and improve context-aware technologies.",
+      "visual_prompt": "A person sitting in front of a computer screen displaying a dashboard with realtime data on social interactions, with subtle animations illustrating patterns and correlations emerging from the aggregated information., photorealistic, ultra realistic, cinematic lighting, natural colors, detailed textures.",
+      "duration": 19,
+      "image_path": "outputs/scene_3.png",
+      "audio_path": "/outputs/audio/audio_03.mp3",
+      "video_path": "outputs/clips/clip_03.mp4",
+      "status": "video_generated"
+    },
+    {
+      "scene_id": "scene_004",
+      "scene_number": 4,
+      "scene_type": "Conclusion",
+      "heading": "Conclusion \u2013 Overview (Part 1)",
+      "narration_text": "Understanding human behavior requires a structured approach, involving Data Management, New Knowledge Generation, and Service Exposure and Control. By adopting these principles, we can design systems that respect users' privacy while providing personalized experiences. Data mining plays a crucial role in enabling new human experiences through various methods. It uses two approaches: statistical algorithms for pattern recognition and algorithmic modeling. Architectural Methodology & Framework generates knowledge based on user-related data, categorized into Real-time and Historical data. Understanding the power of prediction is key to unlocking new possibilities. Online social networks use collaborative filtering to predict utility based on a database of user rates from a sample population. For instance, if two people rate similar items, they share similar tastes, helping recommend items tailored to individual preferences. Trust and reputation systems are essential in predicting and selecting the best quality services.",
+      "visual_prompt": "A user's face is focused on a computer screen displaying a dashboard with data management, new knowledge generation, and service exposure control principles. The background is a minimalist office space with a few scattered papers and a whiteboard., photorealistic, ultra realistic, cinematic lighting, natural colors, detailed textures.",
+      "duration": 57,
+      "image_path": "outputs/scene_4.png",
+      "audio_path": "outputs/audio/audio_04.mp3",
+      "video_path": "outputs/clips/clip_04.mp4",
+      "status": "video_generated"
+    },
+    {
+      "scene_id": "scene_005",
+      "scene_number": 5,
+      "scene_type": "Conclusion",
+      "heading": "Conclusion \u2013 Overview (Part 1)",
+      "narration_text": "Trust models based on Subjective Logic consider individual opinions as discrete values, enabling powerful combinations of trust and reputation systems. Trust networks are crucial in online social interactions, but they also come with risks such as attacks on user privacy and malicious activity. Trust is formalized as an opinion, where agents A and B establish trust relationships. Agent A trusts B with a level denoted by , and B trusts C with a level denoted by . This allows Agent A to determine her trust in C by combining these levels using the operator symbolized as .",
+      "visual_prompt": "A user's face is focused on a computer screen displaying a dashboard with data management, new knowledge generation, and service exposure control principles. The background is a minimalist office space with a few scattered papers and a whiteboard., photorealistic, ultra realistic, cinematic lighting, natural colors, detailed textures.",
+      "duration": 40,
+      "image_path": "outputs/scene_5.png",
+      "audio_path": "outputs/audio/audio_05.mp3",
+      "video_path": "outputs/clips/clip_05.mp4",
+      "status": "video_generated"
+    },
+    {
+      "scene_id": "scene_006",
+      "scene_number": 6,
+      "scene_type": "Conclusion",
+      "heading": "Conclusion \u2013 Overview (Part 2)",
+      "narration_text": "Consider a network with multiple paths, such as A, B, C, C, D. If we remove the edge between nodes B and C, it eliminates the bottleneck and strengthens the overall network. Trust networks are vulnerable to attacks on user privacy and malicious activity. To prevent these threats, OSN providers must deploy mechanisms that identify duplicate profiles and thwart sophisticated impersonation techniques like profile porting. Online social networks are vulnerable to various types of attacks that compromise user privacy and reputation. Attackers target public online spaces to collect information about an individual's behavior and attributes. Secondary data collection involves using external sources to gather info about a user's profile. Automated pattern recognition tools analyze the attack, searching for connections to OSN profiles. Countermeasures are essential in preventing profiling attacks like communication tracking, defamation, collusion, and others.",
+      "visual_prompt": "A person sitting in front of a computer screen displaying a social media profile with multiple connections (A, B, C, D) on a network diagram, hands relaxed on the armrest, eyes focused on the screen., photorealistic, ultra realistic, cinematic lighting, natural colors, detailed textures.",
+      "duration": 56,
+      "image_path": "outputs/scene_6.png",
+      "audio_path": "outputs/audio/audio_06.mp3",
+      "video_path": "outputs/clips/clip_06.mp4",
+      "status": "video_generated"
+    },
+    {
+      "scene_id": "scene_007",
+      "scene_number": 7,
+      "scene_type": "Conclusion",
+      "heading": "Conclusion \u2013 Overview (Part 2)",
+      "narration_text": "A malicious user creates a fake profile on a social network, sends automated requests to collect information about another user, and then uses this data to spread false information about the target user. This can lead to a denial-of-service attack on their physical resources and damage their reputation. To protect themselves online, users should be aware of these types of attacks and take steps to control what data they share, limit their online presence, and report suspicious activity. Social network providers must also implement countermeasures to prevent profiling attacks and maintain a safe and trustworthy environment for their users.",
+      "visual_prompt": "A person sitting in front of a computer screen displaying a social media profile with multiple connections (A, B, C, D) on a network diagram, hands relaxed on the armrest, eyes focused on the screen., photorealistic, ultra realistic, cinematic lighting, natural colors, detailed textures.",
+      "duration": 41,
+      "image_path": "outputs/scene_7.png",
+      "audio_path": "outputs/audio/audio_07.mp3",
+      "video_path": "outputs/clips/clip_07.mp4",
+      "status": "video_generated"
+    }
+  ]
+}
