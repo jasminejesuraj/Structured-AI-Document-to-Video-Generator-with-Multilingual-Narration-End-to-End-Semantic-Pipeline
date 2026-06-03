@@ -23,14 +23,54 @@ from kaggle_runner import LANGUAGE_MAP, credentials_present
 
 MAX_LOG_LINES = 500
 
+THEME = gr.themes.Soft(
+    primary_hue="indigo",
+    secondary_hue="blue",
+    neutral_hue="slate",
+    font=[gr.themes.GoogleFont("Inter"), "ui-sans-serif", "system-ui", "sans-serif"],
+)
+
+CSS = """
+.gradio-container {max-width: 1180px !important; margin: 0 auto !important;}
+#hero {
+  background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 48%, #2563eb 100%);
+  border-radius: 18px; padding: 26px 30px; margin-bottom: 6px;
+  box-shadow: 0 10px 30px rgba(79,70,229,.25);
+}
+#hero h1 {color:#fff; margin:0; font-size:1.85rem; font-weight:700; letter-spacing:-.01em;}
+#hero p {color:#e9e8ff; margin:.45rem 0 0; font-size:1rem;}
+.status-pill {
+  display:inline-flex; align-items:center; gap:.5rem; padding:.5rem .9rem;
+  border-radius:999px; font-size:.92rem; font-weight:500; margin:2px 0 4px;
+}
+.status-ok   {background:#e7f8ef; color:#0f7a44; border:1px solid #b7ead0;}
+.status-warn {background:#fff6e6; color:#a8650a; border:1px solid #f3ddae;}
+.status-pill .dot {width:9px; height:9px; border-radius:50%;}
+.status-ok .dot   {background:#16a34a;}
+.status-warn .dot {background:#f59e0b;}
+#config-card {
+  background: var(--block-background-fill);
+  border: 1px solid var(--border-color-primary);
+  border-radius: 16px; padding: 14px 16px;
+}
+#generate-btn {font-weight:600; font-size:1.02rem; border-radius:12px;}
+#gallery-panel, #video-panel {border-radius:16px;}
+.section-title {font-weight:600; font-size:1.05rem; margin:.4rem 0 .2rem; color:var(--body-text-color);}
+footer {display:none !important;}
+"""
+
 
 def _kaggle_status_md() -> str:
     if credentials_present():
-        return "**Kaggle:** credentials detected — video stage is available."
+        return (
+            '<div class="status-pill status-ok"><span class="dot"></span>'
+            "Kaggle credentials detected — the video stage is ready.</div>"
+        )
     return (
-        "**Kaggle:** no credentials found. Set `KAGGLE_USERNAME` + `KAGGLE_KEY` "
-        "(or place `kaggle.json` in `~/.kaggle/`) to enable the video stage. "
-        "You can still generate the storyboard + images."
+        '<div class="status-pill status-warn"><span class="dot"></span>'
+        "No Kaggle credentials — set KAGGLE_USERNAME + KAGGLE_KEY or add "
+        "~/.kaggle/kaggle.json to enable the video stage. Storyboard + images still work."
+        "</div>"
     )
 
 
@@ -110,17 +150,20 @@ def generate(input_file, language, make_video):
 
 def build_ui() -> gr.Blocks:
     with gr.Blocks(title="AI Document → Video") as demo:
-        gr.Markdown(
-            "# AI Document → Video\n"
-            "Upload a PDF/DOCX → generate a narrated video. "
-            "Storyboard + images run locally; the video renders on Kaggle's free GPU."
+        gr.HTML(
+            '<div id="hero">'
+            "<h1>AI Document → Video</h1>"
+            "<p>Upload a PDF or DOCX → get a narrated video. Storyboard and images "
+            "are generated locally; the video renders on Kaggle's free GPU.</p>"
+            "</div>"
         )
-        status_md = gr.Markdown(_kaggle_status_md())
+        gr.HTML(_kaggle_status_md())
 
-        with gr.Row():
-            with gr.Column(scale=1):
+        with gr.Row(equal_height=False):
+            with gr.Column(scale=1, elem_id="config-card"):
+                gr.HTML('<div class="section-title">1 · Input</div>')
                 input_file = gr.File(
-                    label="Input document (PDF or DOCX)",
+                    label="Document (PDF or DOCX)",
                     file_types=[".pdf", ".docx"],
                     type="filepath",
                 )
@@ -133,17 +176,25 @@ def build_ui() -> gr.Blocks:
                     value=True,
                     label="Render video on Kaggle (free GPU)",
                 )
-                run_btn = gr.Button("Generate", variant="primary")
+                run_btn = gr.Button(
+                    "Generate", variant="primary", elem_id="generate-btn", size="lg"
+                )
             with gr.Column(scale=2):
+                gr.HTML('<div class="section-title">2 · Progress</div>')
                 logs = gr.Textbox(
-                    label="Progress",
-                    lines=20,
-                    max_lines=20,
+                    label=None,
+                    show_label=False,
+                    lines=21,
+                    max_lines=21,
                     autoscroll=True,
                 )
 
-        gallery = gr.Gallery(label="Storyboard images", columns=4, height=260)
-        video_out = gr.Video(label="Final video")
+        gr.HTML('<div class="section-title">3 · Storyboard images</div>')
+        gallery = gr.Gallery(
+            label=None, show_label=False, columns=4, height=260, elem_id="gallery-panel"
+        )
+        gr.HTML('<div class="section-title">4 · Final video</div>')
+        video_out = gr.Video(label=None, show_label=False, elem_id="video-panel")
 
         run_btn.click(
             fn=generate,
@@ -155,4 +206,6 @@ def build_ui() -> gr.Blocks:
 
 if __name__ == "__main__":
     server_port = int(os.environ.get("AIV_PORT", "7860"))
-    build_ui().queue().launch(server_name="0.0.0.0", server_port=server_port)
+    build_ui().queue().launch(
+        server_name="0.0.0.0", server_port=server_port, theme=THEME, css=CSS
+    )
