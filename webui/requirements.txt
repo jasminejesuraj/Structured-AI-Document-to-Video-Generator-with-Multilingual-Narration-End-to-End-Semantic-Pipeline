@@ -1,0 +1,5 @@
+# Web UI dependencies (in addition to the project's root requirements.txt,
+# which provides the local storyboard + image generation stack).
+gradio>=4.0
+kaggle==1.6.17
+nbformat>=5.0

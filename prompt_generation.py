@@ -15,6 +15,34 @@ try:
     import sys
     import subprocess
     import time
+    import os
+    import glob
+
+    def resolve_input_document():
+        """Resolve the input document path.
+
+        Priority:
+        1. AIV_INPUT_DOC environment variable (set by the web UI).
+        2. First PDF/DOCX found in the repo's ``input/`` folder.
+        """
+        env_path = os.environ.get("AIV_INPUT_DOC")
+        if env_path:
+            if not os.path.exists(env_path):
+                raise FileNotFoundError(f"Input document not found: {env_path}")
+            return env_path
+
+        base_dir = os.path.dirname(os.path.abspath(__file__))
+        input_dir = os.path.join(base_dir, "input")
+        candidates = sorted(
+            glob.glob(os.path.join(input_dir, "*.pdf"))
+            + glob.glob(os.path.join(input_dir, "*.docx"))
+        )
+        if not candidates:
+            raise FileNotFoundError(
+                "No input document found. Set AIV_INPUT_DOC or place a "
+                f"PDF/DOCX inside {input_dir}"
+            )
+        return candidates[0]
 
     def ensure_ollama_running():
 
@@ -1226,7 +1254,8 @@ try:
 
 
     if __name__ == "__main__":
-        pdf_path = r"D:/Downloads/Structured Document-to-Video Generator with Multilingual .docx"
+        pdf_path = resolve_input_document()
+        print(f"Input document: {pdf_path}")
 
         ensure_ollama_running()
         ensure_model_exists()
@@ -1333,7 +1362,7 @@ try:
             scene["scene_id"] = f"scene_{idx:03d}"
 
         
-        filename = f"storyboard.json"
+        filename = os.environ.get("AIV_STORYBOARD", "storyboard.json")
         save_storyboard(storyboard, out_path=filename)
 
         

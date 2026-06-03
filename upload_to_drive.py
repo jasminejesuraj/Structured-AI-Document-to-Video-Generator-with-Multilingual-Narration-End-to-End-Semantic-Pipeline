@@ -13,7 +13,7 @@ PROJECT_FOLDER_NAME = "AI_VIDEO_PIPELINE"
 
 LOCAL_OUTPUT_FOLDER = "outputs"
 
-JSON_FILE = r"D:/vs code/project/storyboard.json"
+JSON_FILE = os.environ.get("AIV_STORYBOARD", "storyboard.json")
 
 
 project_folder_metadata = {

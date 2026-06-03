@@ -124,7 +124,7 @@ try:
             time.sleep(check_interval)
 
     
-    storyboard_file = r"D:/vs code/project/storyboard.json"
+    storyboard_file = os.environ.get("AIV_STORYBOARD", "storyboard.json")
     if not os.path.exists(storyboard_file):
         raise FileNotFoundError(f"Storyboard file not found: {storyboard_file}")
         
