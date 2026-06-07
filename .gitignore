@@ -5,6 +5,9 @@ __pycache__/
 outputs/
 storyboard.json
 
+# Web UI per-run artifacts
+webui/runs/
+
 # Secrets
 client_secrets.json
 credentials.json
