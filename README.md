@@ -49,11 +49,12 @@ Kaggle now offers two credential styles; the app supports both.
 `~/.kaggle/access_token` (a plain text file containing only the token string —
 *not* a folder, not JSON):
 
+```
 mkdir -p ~/.kaggle
 echo "PASTE_YOUR_TOKEN" > ~/.kaggle/access_token
 chmod 600 ~/.kaggle/access_token         # Linux/macOS
 export KAGGLE_USERNAME=your_username  
-
+```
 On Windows (PowerShell):
  
 ```powershell
