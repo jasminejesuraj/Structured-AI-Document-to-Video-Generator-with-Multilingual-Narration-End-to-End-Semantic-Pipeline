@@ -1,0 +1,9 @@
+# Web UI dependencies (in addition to the project's root requirements.txt,
+# which provides the local storyboard + image generation stack).
+gradio>=4.0
+# 1.6.17 cannot authenticate Kaggle's new access-token system; >=1.8.0 supports
+# both the legacy kaggle.json key pair and ~/.kaggle/access_token. The client is
+# imported lazily (after credentials are verified) so its import-time
+# authenticate() call cannot crash the app on launch.
+kaggle>=1.8.0
+nbformat>=5.0
